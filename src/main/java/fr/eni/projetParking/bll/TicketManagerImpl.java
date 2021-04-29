@@ -1,9 +1,7 @@
 package fr.eni.projetParking.bll;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -24,7 +22,6 @@ public class TicketManagerImpl implements TicketManager {
 	@Override
 	@Transactional
 	public void createTicket(Ticket ticket) {
-		ticket.setHeureArrivee(LocalDateTime.now());
 		ticketDao.save(ticket);
 	}
 
@@ -59,12 +56,9 @@ public class TicketManagerImpl implements TicketManager {
 		//insertion de l'heure de départ dans le ticket
 		ticket.setHeureDepart(heureDepart);
 		//calcul du nombre d'heure restées dans le parking
-		Duration dur = Duration.between(ticket.getHeureArrivee(), ticket.getHeureDepart());
-		Float secondes = (float) dur.getSeconds();
-		//conversion des secondes en heures
-		Float heures = secondes/3600;
-		//Toute heure commencée est comptée en totalité
-		
+		long heures = Duration.between(ticket.getHeureArrivee(), ticket.getHeureDepart()).toHours();
+//		//Toute heure commencée est comptée en totalité
+//		int heures = Math.round(secondes/3600);
 		//calcul du prix du ticket 
 		Float prixTicket = heures * ticket.getParking().getTarifHoraire();
 		return prixTicket;
