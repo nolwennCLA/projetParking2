@@ -1,5 +1,9 @@
 package fr.eni.projetParking.dal;
 
-public interface TicketDAO {
+import org.springframework.data.repository.CrudRepository;
+
+import fr.eni.projetParking.bo.Ticket;
+
+public interface TicketDAO extends CrudRepository<Ticket, Integer>{
 
 }

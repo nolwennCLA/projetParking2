@@ -1,6 +1,6 @@
 package fr.eni.projetParking.bo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +20,8 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTicket;
 	
-	private LocalDate heureArrivee;
-	private LocalDate heureDepart;
+	private LocalDateTime heureArrivee;
+	private LocalDateTime heureDepart;
 	private Float prixTicket;
 	
 	@ManyToOne
@@ -29,12 +29,14 @@ public class Ticket {
 	@ManyToOne
 	private Vehicule vehicule;
 	
-	public Ticket(LocalDate heureArrivee, Parking parking, Vehicule vehicule) {
+	public Ticket(LocalDateTime heureArrivee, Parking parking, Vehicule vehicule) {
 		super();
 		this.heureArrivee = heureArrivee;
 		this.parking = parking;
 		this.vehicule = vehicule;
 	}
+	
+
 	
 	
 
