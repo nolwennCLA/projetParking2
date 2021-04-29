@@ -29,12 +29,13 @@ public class Ticket {
 	@ManyToOne
 	private Vehicule vehicule;
 	
-	public Ticket(LocalDateTime heureArrivee, Parking parking, Vehicule vehicule) {
+	public Ticket(Parking parking, Vehicule vehicule) {
 		super();
-		this.heureArrivee = heureArrivee;
+		this.heureArrivee = LocalDateTime.now();
 		this.parking = parking;
 		this.vehicule = vehicule;
 	}
+	
 	
 
 	
