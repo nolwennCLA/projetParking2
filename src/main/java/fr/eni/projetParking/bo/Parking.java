@@ -23,6 +23,7 @@ public class Parking {
 	private String adresse;
 	private Integer nbPlace;
 	private Float tarifHoraire;
+	private Integer nbPlacesRestantes;
 	
 	@OneToMany (mappedBy = "parking")
 	private List<Ticket>listTicket;
