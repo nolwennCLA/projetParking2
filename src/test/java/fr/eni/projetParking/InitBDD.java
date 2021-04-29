@@ -1,48 +1,51 @@
 package fr.eni.projetParking;
 
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import fr.eni.projetParking.bll.ParkingManager;
+import fr.eni.projetParking.bll.VehiculeManager;
+import fr.eni.projetParking.bo.Parking;
+import fr.eni.projetParking.bo.Vehicule;
 
 @Component // le component sera appellé dès le lancement de l'appli, cela va donc changer son contenu, ici les données à mettre en base
 public class InitBDD {
 	
 	
-//	@Autowired
-//	ContactManager managerContact;
-//	
-//	@Autowired
-//	CommentaireManager managerCommentaire;
-//	
-//	
-//	@PostConstruct // cette methode s'execute après le constructeur, pour pouvoir avoir acces au manager, car l'autowired sera actif seulement après le constructeur
-//	private void init() throws IOException, ContactManagerException {
-//		
-//		// je cree des données pour la BDD et tester mes WS
-//			Pays france = new Pays("France","Paris");
-//			Pays argentine = new Pays("Argentine","Buenos Aires");
-//			
-//			Ville ileTudy= new Ville("29980", "Ile Tudy", france);
-//			Ville buenosAires = new Ville("123456", "Buenos Aires", argentine);
-//			
-//			Contact c1 = new Contact("Croc", "Odile", "0298878787", "rue des marais", "croc@croc.fr");
-//			Contact c2 = new Contact("Croc", "Amandine", "0298878787", "rue des marais", "croc@croc.fr");
-//			Contact c3 = new Contact("Brel", "Jacques", "0298878787", "rue des marquises", "brel@brel.fr");
-//			
-//			c1.setVille(ileTudy);
-//			c2.setVille(ileTudy);
-//			c3.setVille(buenosAires);
-//			
-//			managerContact.addContact(c1);
-//			managerContact.addContact(c2);
-//			managerContact.addContact(c3);
-//			
-//			// j'ajoute des commentaires
-//			Commentaire com1= new Commentaire("C'est beau la vie");
-//			Commentaire com2= new Commentaire("C'est la fete à la grenouille");
-//			managerCommentaire.addCommentaire(com1, c1);
-//			managerCommentaire.addCommentaire(com2, c1);
-//			
+	@Autowired
+	ParkingManager managerParking;
+	
+	@Autowired
+	VehiculeManager managerVehicule;
+	
+	@PostConstruct // cette methode s'execute après le constructeur, pour pouvoir avoir acces au manager, car l'autowired sera actif seulement après le constructeur
+	private void init() throws IOException {
+		
+		// je cree des données pour ma BDD
+		
+		Parking p1 = new Parking("rue du port", 15, 8.5f);
+		Parking p2 = new Parking("rue du grand large", 30, 5f);
+		Parking p3 = new Parking("rue des albatros", 2 , 6.5f);
+		
+		Vehicule v1= new Vehicule("Peugeot", "208", "123PE29");
+		Vehicule v2= new Vehicule("Renault", "Clio", "123RE29");
+		Vehicule v3= new Vehicule("Citroen", "Picasso", "123CI29");
+		
+		managerParking.addParking(p1);
+		managerParking.addParking(p2);
+		managerParking.addParking(p3);
+		
+		managerVehicule.addVehicule(v1);
+		managerVehicule.addVehicule(v2);
+		managerVehicule.addVehicule(v3);
+		
+		System.out.println(managerParking.getAll());
 			
-//	}
+	}
 	
 
 }
