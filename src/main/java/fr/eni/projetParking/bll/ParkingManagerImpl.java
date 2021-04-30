@@ -89,9 +89,12 @@ public class ParkingManagerImpl implements ParkingManager {
 	@Override
 	public Float getChiffreAffaire(Parking parking) {
 		List<Ticket>listTicket= parking.getListTicket();
-		Float ca = null;
+		Float ca = 0f;
 		for (Ticket t : listTicket) {
-			ca+=t.getPrixTicket();
+			if (t.getPrixTicket()!=null) {
+				ca+=t.getPrixTicket();
+			}
+			
 		}
 		return ca;
 	}

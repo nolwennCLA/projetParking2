@@ -1,11 +1,20 @@
 package fr.eni.projetParking.dal;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import fr.eni.projetParking.bo.Parking;
+import fr.eni.projetParking.bo.Ticket;
 import fr.eni.projetParking.bo.Vehicule;
 
 public interface VehiculeDAO extends CrudRepository<Vehicule, Integer> {
 
 	void findVehiculeByImmat(String immat);
+
+	@Query("SELECT t FROM Ticket t WHERE t.parking.idParking = :idParking AND t.prixTicket IS NULL ")
+	List<Ticket> findVehiculeInParking(@Param("idParking") Integer idParking);
 
 }
