@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ParkingDTO {
 	
-	private Parking parking;
-	private Integer chiffreAffaire;
+	private String adresseParking;
+	private Float chiffreAffaire;
 	
-	public ParkingDTO(Parking parking, Integer chiffreAffaire) {
+
+	public ParkingDTO(String adresseParking, Float chiffreAffaire) {
 		super();
-		this.parking = parking;
+		this.adresseParking = adresseParking;
 		this.chiffreAffaire = chiffreAffaire;
 	}
 	

@@ -1,5 +1,6 @@
 package fr.eni.projetParking.bll;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -50,9 +51,15 @@ public class ParkingManagerImpl implements ParkingManager {
 		
 		try {
 			this.addVehiculeInParking(v1, p3);
+			this.addVehiculeInParking(v1, p2);
+			this.addVehiculeInParking(v1, p1);
 		} catch (ParkingExceptionBLL e) {
 			e.getMessage();
 		}
+		
+		managerTicket.clotureTicket(managerTicket.getById(1), LocalDateTime.of(2021, 4, 30, 22, 30, 32));
+		managerTicket.clotureTicket(managerTicket.getById(2), LocalDateTime.of(2021, 4, 30, 17, 30, 32));
+		managerTicket.clotureTicket(managerTicket.getById(3), LocalDateTime.of(2021, 4, 30, 12, 30, 32));
 		
 	}
 
@@ -89,9 +96,12 @@ public class ParkingManagerImpl implements ParkingManager {
 	@Override
 	public Float getChiffreAffaire(Parking parking) {
 		List<Ticket>listTicket= parking.getListTicket();
-		Float ca = null;
+		Float ca = 0f;
 		for (Ticket t : listTicket) {
-			ca+=t.getPrixTicket();
+			if (t.getPrixTicket()!=null) {
+				ca+=t.getPrixTicket();
+			}
+			
 		}
 		return ca;
 	}
