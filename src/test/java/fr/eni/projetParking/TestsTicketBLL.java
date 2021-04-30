@@ -36,7 +36,7 @@ class TestsTicketBLL {
 
 	@Test
 	void contextLoads() {
-		System.out.println(ticketManager.clotureTicket(t1, LocalDateTime.of(2021, 4, 29, 17, 30, 32)));
+		System.out.println(ticketManager.clotureTicket(t1, LocalDateTime.of(2021, 4, 30, 22, 30, 32)));
 
 	}
 

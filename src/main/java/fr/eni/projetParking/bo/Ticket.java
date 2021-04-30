@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,18 +22,19 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idTicket;
 	
-	private LocalDateTime heureArrivee;
+	private LocalDateTime heureArrivee = LocalDateTime.now();
 	private LocalDateTime heureDepart;
 	private Float prixTicket;
 	
 	@ManyToOne
+	@JsonManagedReference
 	private Parking parking;
+	
 	@ManyToOne
 	private Vehicule vehicule;
 	
 	public Ticket(Parking parking, Vehicule vehicule) {
 		super();
-		this.heureArrivee = LocalDateTime.now();
 		this.parking = parking;
 		this.vehicule = vehicule;
 	}

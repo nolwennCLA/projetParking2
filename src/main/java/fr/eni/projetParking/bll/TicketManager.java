@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import fr.eni.projetParking.bo.Ticket;
+import fr.eni.projetParking.bo.Vehicule;
 
 /**
  * CRUD de Ticket
@@ -51,5 +52,12 @@ public interface TicketManager {
 	 * @param ticket
 	 */
 	public Float clotureTicket(Ticket ticket, LocalDateTime heureDepart);
+
+	/**
+	 * Web Service : recherche de la liste des tickets d'un véhicule par son immat
+	 * @param immat
+	 * @return
+	 */
+	public List<Ticket> getListTicketByVehicule(String immat);
 
 }
