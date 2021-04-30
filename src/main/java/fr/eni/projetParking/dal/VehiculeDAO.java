@@ -12,7 +12,7 @@ import fr.eni.projetParking.bo.Vehicule;
 
 public interface VehiculeDAO extends CrudRepository<Vehicule, Integer> {
 
-	void findVehiculeByImmat(String immat);
+	Vehicule findVehiculeByImmat(String immat);
 
 	@Query("SELECT t FROM Ticket t WHERE t.parking.idParking = :idParking AND t.prixTicket IS NULL ")
 	List<Ticket> findVehiculeInParking(@Param("idParking") Integer idParking);

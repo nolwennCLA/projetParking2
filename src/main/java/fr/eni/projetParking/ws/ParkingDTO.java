@@ -1,6 +1,5 @@
 package fr.eni.projetParking.ws;
 
-import fr.eni.projetParking.bo.Parking;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
