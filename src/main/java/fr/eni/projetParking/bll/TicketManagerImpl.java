@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.eni.projetParking.bo.Ticket;
+import fr.eni.projetParking.bo.Vehicule;
 import fr.eni.projetParking.dal.TicketDAO;
 
 @Service
@@ -58,10 +59,18 @@ public class TicketManagerImpl implements TicketManager {
 		//calcul du nombre d'heure restées dans le parking
 		long heures = Duration.between(ticket.getHeureArrivee(), ticket.getHeureDepart()).toHours();
 //		//Toute heure commencée est comptée en totalité
-//		int heures = Math.round(secondes/3600);
 		//calcul du prix du ticket 
 		Float prixTicket = heures * ticket.getParking().getTarifHoraire();
+		//j'enregistre le prix du ticket dans le ticket
+		ticket.setPrixTicket(prixTicket);
+		//j'enregistre le ticket dans la BDD
+		ticketDao.save(ticket);
 		return prixTicket;
+	}
+
+	@Override
+	public List<Ticket> getListTicketByVehicule(String immat) {
+		return ticketDao.getListTicketByVehicule(immat);
 	}
 
 }

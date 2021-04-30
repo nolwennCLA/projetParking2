@@ -1,11 +1,15 @@
 package fr.eni.projetParking.ws;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.eni.projetParking.bll.ParkingManager;
@@ -37,6 +41,7 @@ public class TicketRest {
 	 private Ticket t2 = new Ticket(p2, v2);
 	 
 	 @PostConstruct
+	 @Transactional
 	 private void init() throws IOException {
 		 Properties properties = new Properties();
 		 properties.load(getClass().getResourceAsStream("/application.properties"));
@@ -56,4 +61,20 @@ public class TicketRest {
 			 
 			}
 	 }
+	 
+	 //liste des tickets
+	 @GetMapping("WS/listeTickets/{immat}")
+	 public List<Ticket> listTickets(@PathVariable String immat){
+		 return ticketManager.getListTicketByVehicule(immat);
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }

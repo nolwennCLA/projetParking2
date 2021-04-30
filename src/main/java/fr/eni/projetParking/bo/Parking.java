@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,6 +29,7 @@ public class Parking {
 	private Float tarifHoraire;
 	
 	@OneToMany (mappedBy = "parking")
+	@JsonBackReference
 	private List<Ticket>listTicket= new ArrayList<Ticket>();
 	
 	public Parking(String adresse, Integer nbPlace, Float tarifHoraire) {
