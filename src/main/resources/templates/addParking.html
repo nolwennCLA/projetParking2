@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Saisie Immat</title>
+</head>
+<body>
+<!-- formulaire  -->
+<!-- <form action="#" th:action="@{/etudiant/add}" th:object="${etudiant}" method="post"> -->
+<!-- <!-- th:action dit qu'une fois validé on va se rediriger vers /etudiant/add  --> -->
+<!-- <!-- le etudiant est injecté par th:object, il relie le etudiant au formulaire --> -->
+<!--     <label for="nom">Nom</label> -->
+<!--     <input type="text" th:field="*{nom}" id="nom" placeholder="Nom"> -->
+<!-- <!--     th:field: va récuperer la valeur nom de l'objet client /en entree il va mettre la valuer par défaut dans le value de  l'input ( donc l'affiche dans le formulaire) mais va aussi en sortie faire un setnom sur l'objet ( faire du binbing) --> -->
+<!--     <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span> -->
+<!-- <!--     s'il y a des erreurs sur le nom alors on va afficher le message d'erreur défini dans le bo. le ('nom')correspond au nom de l'id de la ligne dessus, le *{nom} correspond à celui recuperer par le th:field --> -->
+   
+<!--     <label for="prenom">Prenom</label> -->
+<!--     <input type="text" th:field="*{prenom}" id="prenom" placeholder="prenom"> -->
+<!--     <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span> -->
+    
+<!--     <label for="age">Age</label> -->
+<!--     <input type="text" th:field="*{age}" id="age" placeholder="age"> -->
+<!--     <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span> -->
+    
+<!--     <input type="submit" value="Ajouter l'étudiant">    -->
+</form>
+</body>
+</html>

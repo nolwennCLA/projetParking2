@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.eni.projetParking.bo.Parking;
 import fr.eni.projetParking.bo.Ticket;
 import fr.eni.projetParking.bo.Vehicule;
 import fr.eni.projetParking.dal.VehiculeDAO;
@@ -26,8 +25,8 @@ public class VehiculeManagerImpl implements VehiculeManager {
 	}
 
 	@Override
-	public void findVehiculeByImmat(String immat) {
-		daoVehicule.findVehiculeByImmat(immat);
+	public Vehicule findVehiculeByImmat(String immat) {
+		return daoVehicule.findVehiculeByImmat(immat);
 		
 	}
 
@@ -41,5 +40,16 @@ public class VehiculeManagerImpl implements VehiculeManager {
 		return lstVehicule;
 		
 	}
+
+	@Override
+	public List<Vehicule> findAll() {
+		return (List<Vehicule>) daoVehicule.findAll();
+	}
+
+	@Override
+	public Vehicule findById(Integer id) {
+		return daoVehicule.findById(id).orElse(null);
+	}
+
 
 }
